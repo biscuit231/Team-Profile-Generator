@@ -3,11 +3,12 @@ const fs = require('fs');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
-const createHTML = require('./src/HTML-template');
+const createHTML = require('./src/HTML-template.js');
 
 const employees = [];
 
 worker = async () => {
+    console.log(createHTML)
     const workerAnswers = await inquirer.prompt([
     {
         type: 'input',

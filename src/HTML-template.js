@@ -1,6 +1,6 @@
 
 createHTML = (data) => {
-    console.log(data);
+    console.log("This is " + data);
     htmlArray = []; 
 
     for (let i = 0; i < data.length; i++) {
