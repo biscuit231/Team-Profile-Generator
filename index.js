@@ -8,7 +8,7 @@ const createHTML = require('./src/HTML-template.js');
 const employees = [];
 
 worker = async () => {
-    console.log(createHTML)
+    // console.log(createHTML)
     const workerAnswers = await inquirer.prompt([
     {
         type: 'input',
@@ -99,14 +99,12 @@ addMember = async () => {
         }])
         
         if(anotherMember.team == true) {
-            worker()
+            return worker()
         } 
-        else {
-            console.log(employees)
-            return employees;
-        }
+        console.log(employees)
+        generateFile();
+        return employees;   
 };
-
 
 function writeToFile(fileName, data) {
     fs.writeFile('./Team.html', data, err => {
@@ -116,15 +114,10 @@ function writeToFile(fileName, data) {
         }
     })};
 
+function generateFile() {
+    createHTML(employees)
+    .then(data => writeToFile(data))
+    .catch(err => console.error(err));
+}
 
-worker()    
-    .then(employees)
-    .then(employees => {
-        return createHTML(employees);
-    })
-    .then(writehtml => {
-        return writeToFile(writehtml);
-    })
-    .catch(err => {
-     console.log(err);
-    });
+worker();

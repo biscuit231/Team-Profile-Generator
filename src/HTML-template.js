@@ -1,11 +1,11 @@
 
 createHTML = (data) => {
-    console.log("This is " + data);
+    // console.log("This is " + data);
     htmlArray = []; 
 
     for (let i = 0; i < data.length; i++) {
         const eachEmployee = data[i];
-        const employeeRole = employee.getRole(); 
+        const employeeRole = eachEmployee.getRole(); 
 
         if (employeeRole === 'Manager') {
             const managerCard = createManager(eachEmployee);
