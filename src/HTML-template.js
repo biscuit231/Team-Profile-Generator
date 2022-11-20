@@ -69,7 +69,7 @@ const createManager = function(manager) {
         <ul class="list-group">
             <li class="list-group-item">ID: ${manager.id}</li>
             <li class="list-group-item">Email Address: ${manager.email}</li>
-            <li class="list-group-item">Phone Number: ${manager.officenumber}</li>
+            <li class="list-group-item">Phone Number: ${manager.officeNumber}</li>
         </ul>
     </div>
 </div>`

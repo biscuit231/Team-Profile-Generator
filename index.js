@@ -75,7 +75,7 @@ else if (workerAnswers.role === 'Manager') {
     const managerAnswer = await inquirer.prompt([
         {
             type: 'input',
-            name: 'officenumber',
+            name: 'officeNumber',
             message: 'What is your office number?',
         },
     ])
@@ -83,7 +83,7 @@ else if (workerAnswers.role === 'Manager') {
         workerAnswers.name,
         workerAnswers.id,
         workerAnswers.email,
-        managerAnswer.officenumber
+        managerAnswer.officeNumber
     )
     console.log(managerCardInfo);
     employees.push(managerCardInfo);
@@ -106,18 +106,23 @@ addMember = async () => {
         return employees;   
 };
 
-function writeToFile(fileName, data) {
-    fs.writeFile('./Team.html', data, err => {
+function writeToFile(data) {
+    fs.writeFile('./Team-Profile.html', data, (err) => {
         if (err) throw err;
         else {
         console.log('Success!');
         }
     })};
 
-function generateFile() {
-    createHTML(employees)
-    .then(data => writeToFile(data))
-    .catch(err => console.error(err));
+async function generateFile() {
+    let htmlContent = await createHTML(employees);
+    console.log(htmlContent);
+
+    try {
+        writeToFile(htmlContent);
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 worker();
